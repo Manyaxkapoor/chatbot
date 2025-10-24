@@ -190,7 +190,9 @@ FAQ DATABASE:
 # ============================================
 # CHATBOT WITH MEMORY
 # ============================================
-class ChatBot:
+class ChatBot: 
+    # this is used to help bot remember the prev conversation_history
+
     def __init__(self):
         """Initialize chatbot with conversation memory"""
         self.conversation_history = [
@@ -242,10 +244,10 @@ def main():
     print("=" * 70)
     print("\n I can help with:")
     print("• Account Management  • Billing & Payments  • Technical Support")
-    print("   • Features & Usage    • Plans & Pricing")
+    print("• Features & Usage    • Plans & Pricing")
     print("\n Commands:")
-    print("   • 'new' - Start fresh conversation")
-    print("   • 'quit' - Exit")
+    print("• 'new' - Start fresh conversation")
+    print("• 'quit' - Exit")
     print("\n I remember everything we discuss in this conversation!\n")
     print("-" * 70 + "\n")
     
@@ -261,7 +263,7 @@ def main():
         
         # Handle quit
         if user_input.lower() in ['quit', 'exit', 'bye']:
-            print(f"\n Thanks for chatting! We had {bot.message_count} exchanges.")
+            print(f"\nThanks for chatting! We had {bot.message_count} exchanges ;)")
             print("Have a great day!\n")
             break
         
