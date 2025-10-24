@@ -1,18 +1,26 @@
 # 🤖 FAQ Support Chatbot
 
-> An AI-powered **customer support assistant** built with **Streamlit** and **Groq API**, designed to provide accurate, deterministic answers from a structured FAQ database.
-> Think of it as a mini helpdesk — fast, reliable, and hallucination-free.
+> An AI-powered **customer support assistant** built with **Streamlit** and **Groq API**, designed to answer questions from a structured FAQ database — fast, accurate, and hallucination-free.
+> Try it live here → [**webchatpy.streamlit.app**](https://webchatpy.streamlit.app/)
 
 ---
 
 ## 🧩 Features
 
-✅ **Real-time Chat Interface** — Streamlit-based, clean and responsive
-✅ **Deterministic Responses** — Uses `temperature=0` for consistent output
-✅ **Predefined FAQ Knowledge Base** — No hallucination or fake info
-✅ **Chat Memory** — Retains conversational context within session
-✅ **Custom UI** — Smooth pastel background, modern sidebar, and hover effects
-✅ **Session Controls** — Clear chat anytime and start fresh
+* 💬 **Interactive Chat Interface** — built on Streamlit with clean, responsive UI
+* 🧠 **Deterministic Answers** — powered by `llama-3.1-8b-instant` with `temperature=0`
+* 📚 **Structured FAQ Knowledge Base** — ensures factual, scoped answers only
+* 🗣️ **Chat Memory** — remembers your questions during a session
+* 🎨 **Custom Styling** — modern layout with soft pastel backgrounds and rounded elements
+* ♻️ **Session Controls** — clear chat anytime and start fresh easily
+
+---
+
+## 🚀 Live Demo
+
+🔗 **Access the chatbot:** [https://webchatpy.streamlit.app/](https://webchatpy.streamlit.app/)
+
+Use the web version to explore all core functionalities — no local setup needed.
 
 ---
 
@@ -20,39 +28,66 @@
 
 ```
 📁 project/
-├── .env                   # API key storage
+├── .env                   # API key storage (local only)
 ├── WebChat.py             # Main Streamlit web app
+├── requirements.txt       # Added the required packages
 ├── chatbot.py             # Core chatbot logic (optional modular version)
-├── faq_chatbot.py         # FAQ data and prompt management
+├── faq_chatbot.py         # FAQ data and system prompt management
 ├── stats.py               # Session analytics (optional)
-├── test_determinism.py    # Unit tests for deterministic response behavior
+├── test_determinism.py    # Test deterministic response behavior
 ```
 
 ---
 
-### Add Your API Key
+## ⚙️ Setup Instructions (for local use)
 
-Create a `.env` file in the root directory:
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/faq-support-chatbot.git
+cd faq-support-chatbot
+```
+
+### 2️⃣ Create & Activate Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate      # Windows
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4️⃣ Add Your API Key
+
+Create a `.env` file:
 
 ```
 GROQ_API_KEY=your_api_key_here
 ```
 
-### Run the Application
+*(If hosting on Streamlit Cloud, use “Secrets” instead of `.env`.)*
+
+### 5️⃣ Run the App
 
 ```bash
 streamlit run WebChat.py
 ```
 
+Then open [http://localhost:8501](http://localhost:8501) in your browser.
+
 ---
 
 ## 🧠 How It Works
 
-1. **User Input:** You type a question into the Streamlit chat box.
-2. **Prompt Context:** The full conversation (system + user + assistant) is sent to the Groq API.
-3. **Groq Model:** LLaMA 3.1 (8B Instant) processes it with a strict system prompt tied to the FAQ data.
-4. **Response:** The model replies deterministically using only valid FAQ info.
-5. **Memory:** Chat history persists during the session for contextual answers.
+1. The app loads a **system prompt** containing all FAQ data.
+2. User questions are added to a **conversation history**.
+3. This history is passed to **Groq’s LLaMA 3.1 model**, which returns factual answers only from the FAQ database.
+4. The Streamlit UI displays the response and retains chat memory for context.
 
 ---
 
